@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    //"./eslintrc-auto-import.json", // 此规则是自动按需加载时防止 Eslint 校验不通过
+    // vue 规则
+    "plugin:vue/vue3-recommended",
+    "plugin:@typescript-eslint/recommended",
+    // 告诉 ESLint 关闭与 Prettier 格式化规则冲突的任何规则，需写在最后，会覆盖前面的配置
+    "plugin:prettier/recommended"
+  ],
+  // 添加 vue文件解析器  解析template文件
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "vue",
+    // 将 Prettier 的格式化功能集成到 ESLint 中。会应用Prettier的配置
+    "prettier"
+  ],
+  "rules": {
+    "vue/multi-word-component-names": [
+      "error",
+      {
+        "ignores": ["Login", "Register", "index", "404"] // 需要忽略的组件名
+      }
+    ],
+    // 处理 prettier 和 eslint 冲突的规则
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 150,
+        "singleQuote": true,
+        "semi": true
+      }
+    ]
+  }
+}
